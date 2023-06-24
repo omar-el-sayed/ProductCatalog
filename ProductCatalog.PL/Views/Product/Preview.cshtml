@@ -1,0 +1,136 @@
+﻿@model ProductDto
+@inject SignInManager<ProductCatalog.DAL.Models.ApplicationUser> signInManager
+@inject UserManager<ProductCatalog.DAL.Models.ApplicationUser> userManager
+
+@{
+    ViewBag.Title = "Preview";
+}
+
+<div class="col-lg-8">
+    <h2 class="h3 mb-3">
+        <span class="text-capitalize">Products</span>
+        <small class="text-sm">Preview Product.</small>
+        <small class="text-sm">
+            <a asp-action="Index" class="text-sm text-dark">
+                <i class="fas fa-angle-double-left"></i>
+                <span>Back to all Products</span>
+            </a>
+        </small>
+    </h2>
+
+    <div class="card">
+        <div class="card-body p-0">
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <td class="font-weight-bold" style="width: 40%;">Id</td>
+                        <td>@Model.Id</td>
+                    </tr>
+                    <tr>
+                        <td class="font-weight-bold" style="width: 40%;">Name</td>
+                        <td>@Model.Name</td>
+                    </tr>
+                    <tr>
+                        <td class="font-weight-bold" style="width: 40%;">Price</td>
+                        <td>@Model.Price EGP</td>
+                    </tr>
+                    @if (signInManager.IsSignedIn(User) && User.IsInRole(Privilege.Admin))
+                    {
+                        <tr>
+                            <td class="font-weight-bold" style="width: 40%;">Duration</td>
+                            <td>@Model.Duration Weeks</td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold" style="width: 40%;">Start Date</td>
+                            <td>@Model.StartDate.ToShortDateString()</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td class="font-weight-bold" style="width: 40%;">Category</td>
+                        <td>@Model.Category?.Name</td>
+                    </tr>
+                    @if (signInManager.IsSignedIn(User) && User.IsInRole(Privilege.Admin))
+                    {
+                        <tr>
+                            <td class="font-weight-bold" style="width: 40%;">Created on</td>
+                            <td>@Model.CreatedOn.ToShortDateString()</td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold" style="width: 40%;">Updated at</td>
+                            <td>@Model.UpdatedAt.ToShortDateString()</td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold" style="width: 40%;">Created by</td>
+                            <td>@await userManager.FindByIdAsync(Model.CreatedBy.ToString())</td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold" style="width: 40%;">Actions</td>
+                            <td>
+                                <a asp-controller="Product" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-sm text-warning btn-link px-0">
+                                    <i class="far fa-edit"></i>
+                                    Edit
+                                </a>
+                                <a class="delete-button btn btn-sm text-danger btn-link" data-toggle="modal" data-target="#deleteModal" data-item-id="@Model.Id">
+                                    <i class="far fa-trash-alt"></i>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Delete Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure to delete this item?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                <button type="button" id="confirmDeleteButton" class="btn btn-danger">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link href="~/plugins/toastr/toastr.min.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/plugins/toastr/toastr.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.delete-button').click(function () {
+                const deleteBtn = $(this);
+                const itemId = $(this).data('item-id');
+                $('#confirmDeleteButton').click(function () {
+                    $.ajax({
+                        url: `/Product/Delete/${itemId}`, // Replace with your API endpoint
+                        method: 'DELETE',
+                        success: function () {
+                            $('#deleteModal').modal('hide');
+                            toastr.success("Product deleted successfully");
+                            window.location.href = "/Product/Index";
+                        },
+                        error: function (xhr, status, error) {
+                            toastr.error("Something went wrong!");
+                            $('#deleteModal').modal('hide');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+}

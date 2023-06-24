@@ -1,0 +1,88 @@
+﻿@model RegisterDto
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Favicon -->
+    <link rel="icon" href="~/dist/img/AdminLTELogo.png" type="image/x-icon" />
+    <title>Product Catalog | Register</title>
+    <link rel="stylesheet" href="~/auth/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="~/auth/css/style.css">
+    <style>
+        .form-group {
+            margin: 15px 0;
+        }
+
+        .mt-2 {
+            margin-top: 0.5rem !important;
+        }
+
+        .text-danger {
+            color: #dc3545 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <form asp-controller="Account" asp-action="Register" class="register-form" id="register-form">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" asp-for="Name" placeholder="Your Name" />
+                            </div>
+                            <div class="mt-2">
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" asp-for="Email" placeholder="Your Email" />
+                            </div>
+                            <div class="mt-2">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Password"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" asp-for="Password" placeholder="Password" />
+                            </div>
+                            <div class="mt-2">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ConfirmPassword"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="password" asp-for="ConfirmPassword" placeholder="Repeat your password" />
+                            </div>
+                            <div class="mt-2">
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="~/auth/images/signup-image.jpg" alt="sing up image"></figure>
+                        <a asp-controller="Account" asp-action="Login" class="signup-image-link">I am already member</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <script src="~/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/plugins/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/auth/js/main.js"></script>
+</body>
+</html>

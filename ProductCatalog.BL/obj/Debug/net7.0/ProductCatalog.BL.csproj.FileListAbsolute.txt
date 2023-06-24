@@ -1,0 +1,15 @@
+D:\Omar\Projects\ProductCatalog\ProductCatalog.BL\bin\Debug\net7.0\ProductCatalog.BL.deps.json
+D:\Omar\Projects\ProductCatalog\ProductCatalog.BL\bin\Debug\net7.0\ProductCatalog.BL.dll
+D:\Omar\Projects\ProductCatalog\ProductCatalog.BL\bin\Debug\net7.0\ProductCatalog.BL.pdb
+D:\Omar\Projects\ProductCatalog\ProductCatalog.BL\bin\Debug\net7.0\ProductCatalog.DAL.dll
+D:\Omar\Projects\ProductCatalog\ProductCatalog.BL\bin\Debug\net7.0\ProductCatalog.DAL.pdb
+D:\Omar\Projects\ProductCatalog\ProductCatalog.BL\obj\Debug\net7.0\ProductCatalog.BL.csproj.AssemblyReference.cache
+D:\Omar\Projects\ProductCatalog\ProductCatalog.BL\obj\Debug\net7.0\ProductCatalog.BL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Omar\Projects\ProductCatalog\ProductCatalog.BL\obj\Debug\net7.0\ProductCatalog.BL.AssemblyInfoInputs.cache
+D:\Omar\Projects\ProductCatalog\ProductCatalog.BL\obj\Debug\net7.0\ProductCatalog.BL.AssemblyInfo.cs
+D:\Omar\Projects\ProductCatalog\ProductCatalog.BL\obj\Debug\net7.0\ProductCatalog.BL.csproj.CoreCompileInputs.cache
+D:\Omar\Projects\ProductCatalog\ProductCatalog.BL\obj\Debug\net7.0\ProductCatalog.BL.csproj.CopyComplete
+D:\Omar\Projects\ProductCatalog\ProductCatalog.BL\obj\Debug\net7.0\ProductCatalog.BL.dll
+D:\Omar\Projects\ProductCatalog\ProductCatalog.BL\obj\Debug\net7.0\refint\ProductCatalog.BL.dll
+D:\Omar\Projects\ProductCatalog\ProductCatalog.BL\obj\Debug\net7.0\ProductCatalog.BL.pdb
+D:\Omar\Projects\ProductCatalog\ProductCatalog.BL\obj\Debug\net7.0\ref\ProductCatalog.BL.dll
