@@ -1,4 +1,4 @@
-# ProductCatalog
+# Product Catalog
 ## Product Catalog Web Application. Which contains products that show up for a certain duration.
 ### There are 2 privileges in this system (Admin, User).
 #### The Admin can Create, Edit and Delete Products.
